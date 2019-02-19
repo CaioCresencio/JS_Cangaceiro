@@ -12,19 +12,16 @@ class NegociacaoController{
 
     adiciona(event){      
         event.preventDefault();
-        let data = new Date(
-            this._inputData.value.
-            split('-')
-            //.map((item,indice) =>  item - indice%2) 
-            //Atualmente não existe mais essa necessidade de diminuir 1 no mes.
-        );
-        console.log(data);
-
+        
+       
+        let data = DateConverter.paraData(this._inputData.value);
         let negociacao = new Negociacao(
             data,
             parseInt(this._inputQuantidade.value),
             parseFloat(this._inputValor.value)
-        )
-        console.log(negociacao);
+        );
+        
+        let diaMesAno = DateConverter.paraTexto(negociacao.data);
+        console.log(diaMesAno);
     }
 }
